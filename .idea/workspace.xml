@@ -2,51 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="adce7416-0011-4121-b6d7-ed097a0a9647" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/base/Broadcaster.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/process/DistributedProcess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/process/ELEProcess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/process/EPFDProcess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/process/ESFDProcess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/fd/EventuallyLeaderElector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/fd/EventuallyPerfectFailureDetector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/fd/EventuallyStrongFailureDetector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/fd/FailureDetector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/base/FaultInjector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/base/FaultManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/base/Listener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/base/Message.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/process/PFDProcess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/base/Process.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/base/Record.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/base/Registrar.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/process/SFDProcess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/fd/StrongFailureDetector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/base/Utils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/base/Worker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/ant.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/distributed_algorithms.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/paul.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/utils/Constants.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/utils/HeartbeatTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/utils/Timestamp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/process/ELEProcess.java" afterPath="$PROJECT_DIR$/src/main/java/process/ELEProcess.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/process/PFDProcess.java" afterPath="$PROJECT_DIR$/src/main/java/process/PFDProcess.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java" afterPath="$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/base/Process.java" afterPath="$PROJECT_DIR$/src/main/java/base/Process.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="distributed_algorithms.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363133579992" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362911238679" ignored="false" />
-    <file path="/fragment.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363134735539" ignored="false" />
+    <file path="/fragment.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363224530310" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/misc.xml" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362845823051" ignored="false" />
     <file path="/README.md" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362847011480" ignored="false" />
     <file path="/a.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362845831888" ignored="false" />
     <file path="/sample.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362845817060" ignored="false" />
-    <file path="/DistributedProcess.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362855217309" ignored="false" />
-    <file path="/Process.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362921308224" ignored="false" />
+    <file path="/DistributedProcess.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363221536027" ignored="false" />
+    <file path="/Process.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363224130899" ignored="false" />
     <file path="/Listener.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362918928223" ignored="false" />
     <file path="/ELEProcess.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362920532292" ignored="false" />
-    <file path="/PFDProcess.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362921402171" ignored="false" />
+    <file path="/PFDProcess.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363224836378" ignored="false" />
     <file path="/IFailureDetector.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363134817888" ignored="false" />
-    <file path="/PerfectFailureDetector.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363137192915" ignored="false" />
+    <file path="/PerfectFailureDetector.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363221658437" ignored="false" />
+    <file path="/Timestamp.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363224776203" ignored="false" />
+    <file path="/Constants.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363225019161" ignored="false" />
+    <file path="/ScheduledTask.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363224537712" ignored="false" />
+    <file path="/HeartbeatTask.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363224982354" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,13 +97,78 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PerfectFailureDetector.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PerfectFailureDetector.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="5" selection-start="502" selection-end="502" vertical-scroll-proportion="0.39647576">
+            <state line="36" column="24" selection-start="954" selection-end="954" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ELEProcess.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/process/ELEProcess.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="8" selection-start="956" selection-end="1058" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PFDProcess.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/process/PFDProcess.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="48" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HeartbeatTask.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/HeartbeatTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="0" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="29" selection-start="482" selection-end="482" vertical-scroll-proportion="0.30508474">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Process.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/base/Process.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="183" column="19" selection-start="4206" selection-end="4206" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DistributedProcess.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/process/DistributedProcess.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="48" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Timestamp.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/Timestamp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="4" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -145,15 +193,20 @@
       <list>
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/base/DistributedProcess.java" />
-        <option value="$PROJECT_DIR$/src/main/java/process/DistributedProcess.java" />
         <option value="$PROJECT_DIR$/src/main/java/base/Listener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/process/ELEProcess.java" />
-        <option value="$PROJECT_DIR$/src/main/java/base/Process.java" />
-        <option value="$PROJECT_DIR$/src/main/java/process/PFDProcess.java" />
         <option value="$PROJECT_DIR$/src/main/java/base/IFailureDetector.java" />
         <option value="$PROJECT_DIR$/src/main/java/fd/IFailureDetector.java" />
         <option value="$PROJECT_DIR$/src/main/java/fd/FailureDetector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fd/Timestamp.java" />
         <option value="$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/process/ELEProcess.java" />
+        <option value="$PROJECT_DIR$/src/main/java/process/DistributedProcess.java" />
+        <option value="$PROJECT_DIR$/src/main/java/base/Process.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/ScheduledTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/Timestamp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/process/PFDProcess.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/HeartbeatTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/Constants.java" />
       </list>
     </option>
   </component>
@@ -318,6 +371,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="distributed_algorithms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="distributed_algorithms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="process" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -401,6 +480,10 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="base" />
       <recent name="process" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="utils" />
+      <recent name="fd" />
     </key>
   </component>
   <component name="RunManager" selected="Application.FaultInjector">
@@ -622,27 +705,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/base/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="4" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/base/Broadcaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="6" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/base/FaultInjector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/net/InetAddress.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="151" selection-end="151" vertical-scroll-proportion="0.08055854" />
@@ -669,13 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/process/ELEProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="8" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/process/EPFDProcess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="13" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0">
@@ -688,32 +743,9 @@
         <state line="19" column="44" selection-start="543" selection-end="543" vertical-scroll-proportion="0.28242677" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/process/PFDProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="8" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/base/Process.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="30" selection-start="1865" selection-end="1865" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/base/Listener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="24" selection-start="628" selection-end="635" vertical-scroll-proportion="0.4955947">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/process/DistributedProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="17" selection-start="209" selection-end="209" vertical-scroll-proportion="0.18171807">
           <folding />
         </state>
       </provider>
@@ -727,10 +759,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="5" selection-start="502" selection-end="502" vertical-scroll-proportion="0.39647576">
+        <state line="36" column="24" selection-start="954" selection-end="954" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/process/ELEProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="8" selection-start="956" selection-end="1058" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/process/DistributedProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="48" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Timestamp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="4" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/base/Process.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="183" column="19" selection-start="4206" selection-end="4206" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/process/PFDProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="48" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/HeartbeatTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="29" selection-start="482" selection-end="482" vertical-scroll-proportion="0.30508474">
+          <folding />
         </state>
       </provider>
     </entry>

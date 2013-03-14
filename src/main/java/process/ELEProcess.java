@@ -31,4 +31,10 @@ public class ELEProcess implements DistributedProcess {
     public void broadcast(String type, String payload) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
+
+    @Override
+    public Thread getThreadFromPool() {
+        return null;  //To change body of implemented methods use File | Settings
+        // | File Templates.
+    }
 }

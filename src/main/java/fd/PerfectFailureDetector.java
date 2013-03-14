@@ -2,6 +2,7 @@ package fd;
 
 import base.Message;
 import process.DistributedProcess;
+import utils.Timestamp;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,9 @@ import java.util.Map;
  */
 public class PerfectFailureDetector implements FailureDetector {
 
-    private Map<DistributedProcess, Double> suspects;
+    // for the moment, suspects is a map of processes and timestamps
+    private Map<DistributedProcess, Timestamp> suspects;
+    private DistributedProcess owner;
 
     @Override
     public void begin() {
@@ -25,17 +28,18 @@ public class PerfectFailureDetector implements FailureDetector {
     }
 
     private void initializeSuspectsList() {
-        suspects = new HashMap<DistributedProcess, Double>();
+        suspects = new HashMap<DistributedProcess, Timestamp>();
         //To change body of created methods use File | Settings | File Templates.
     }
 
     private void scheduleHeartbeats() {
-
+        Thread heartbeat = owner.getThreadFromPool();
+        heartbeat.run();
     }
 
     @Override
     public void receive(Message m) {
-        //To change body of implemented methods use File | Settings | File Templates.
+
     }
 
     @Override

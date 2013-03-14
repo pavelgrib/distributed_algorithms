@@ -1,6 +1,8 @@
 package process;
 
 import base.Message;
+import utils.Timestamp;
+import java.util.concurrent.Executors;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,6 +15,7 @@ public class PFDProcess extends base.Process {
 
     public PFDProcess(String name, int pid, int totalN) {
         super(name, pid, totalN);
+
     }
 
     @Override
@@ -27,14 +30,19 @@ public class PFDProcess extends base.Process {
     }
 
     @Override
-    public boolean unicast(Message m) {
-        return false;  //To change body of implemented methods use File | Settings
-        // | File Templates.
+    public void initExecutor() {
+        threadPool = Executors.newCachedThreadPool();
     }
 
-    @Override
-    public void broadcast(String type, String payload) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    // submits task to be executed in the future
+    public void submitTaskToBeRun(Runnable task, Timestamp futureTime) {
+        if ( Timestamp.inTheFuture(futureTime) ) {
+            threadPool.submit( task, futureTime );
+        } else {
+            threadPool.execute( task );
+        }
     }
+
+
 
 }

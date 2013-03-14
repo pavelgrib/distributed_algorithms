@@ -1,17 +1,21 @@
 package base;
 
 import process.DistributedProcess;
+import utils.Constants;
 
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class Process implements DistributedProcess {
+public abstract class Process implements DistributedProcess {
 	
 	private String name; /* A triptych that identifies a process p */
 	private String host;
 	private int    port;
-	
+
+    protected ExecutorService threadPool;
 	/* A unique identifier; and the total number of process */
 	public int pid, n;
 	
@@ -28,7 +32,7 @@ public class Process implements DistributedProcess {
 		
 		this.name = name;
 		this.port = Utils.REGISTRAR_PORT + pid;
-		
+        initExecutor();
 		this.host = "UNKNOWN";
 		try {
 			this.host = (InetAddress.getLocalHost()).getHostName();
@@ -173,5 +177,9 @@ public class Process implements DistributedProcess {
 			unicast (m);
 		} */
 		unicast(m);
-	}
+    }
+
+    public abstract void initExecutor();
+
+
 }
