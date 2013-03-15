@@ -17,4 +17,6 @@ public interface DistributedProcess {
     boolean unicast(Message m);
 
     void broadcast(String type, String payload);
+
+    void execute(Runnable task);
 }

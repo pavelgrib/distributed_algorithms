@@ -180,6 +180,4 @@ public abstract class Process implements DistributedProcess {
     }
 
     public abstract void initExecutor();
-
-
 }

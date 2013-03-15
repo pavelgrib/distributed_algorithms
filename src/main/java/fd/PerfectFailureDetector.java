@@ -33,8 +33,7 @@ public class PerfectFailureDetector implements FailureDetector {
     }
 
     private void scheduleHeartbeats() {
-        Thread heartbeat = owner.getThreadFromPool();
-        heartbeat.run();
+
     }
 
     @Override

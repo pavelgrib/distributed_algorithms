@@ -1,14 +1,10 @@
 package utils;
 
-import java.sql.Time;
-
 /**
  * Created with IntelliJ IDEA.
  * User: paul
  * Date: 3/13/13
  * Time: 7:29 PM
- * Class to keep track of times a message is received... should not be changed
- * after creating, so singleton is appropriate pattern to use
  */
 public class Timestamp {
 
@@ -18,7 +14,7 @@ public class Timestamp {
         this.milliseconds = System.currentTimeMillis();
     }
 
-    private Timestamp(long millisSince1970) {
+    public Timestamp(long millisSince1970) {
         this.milliseconds = millisSince1970;
     }
 
