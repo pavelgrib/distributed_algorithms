@@ -33,8 +33,7 @@ public class ELEProcess implements DistributedProcess {
     }
 
     @Override
-    public Thread getThreadFromPool() {
-        return null;  //To change body of implemented methods use File | Settings
-        // | File Templates.
+    public void execute(Runnable task) {
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 }

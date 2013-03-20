@@ -1,15 +1,17 @@
 package base;
 
+import process.PID;
+
 import java.util.*;
 
 public class Message {
 	
-	private int source;
-	private int destination;
+	private PID source;
+	private PID destination;
 	private String type; /* base.Message type */
     private String payload;
 	
-	public Message (int source, int destination, String type, String payload) {
+	public Message (PID source, PID destination, String type, String payload) {
 		this.source = source;
 		this.destination = destination;
 		this.type = type;
@@ -17,8 +19,8 @@ public class Message {
 	}
 	
 	public Message () {
-		source = Utils.INFINITY;
-		destination = Utils.INFINITY;
+		source = PID.newInstance(Utils.INFINITY);
+		destination = PID.newInstance(Utils.INFINITY);
 		type = null;
 		payload = null;
 	}
@@ -27,10 +29,10 @@ public class Message {
 		this(m.getSource(), m.getDestination(), m.getType(), m.getPayload());
 	}
 	
-	public int getSource () {
+	public PID getSource () {
 		return source;
 	}
-	public int getDestination () { 
+	public PID getDestination () {
 		return destination;
 	}
 
@@ -42,11 +44,11 @@ public class Message {
 		return payload;
 	}
 	
-	public void setSource (int source) {
+	public void setSource (PID source) {
 		this.source = source;
 	}
  
-	public void setDestination (int destination) {
+	public void setDestination (PID destination) {
 		this.destination = destination;
 	}
 
@@ -60,8 +62,8 @@ public class Message {
 	
 	public static Message parse (String msg) {
 		StringTokenizer tokens = new StringTokenizer(msg, Utils.SEPARATOR);
-		int s = Integer.parseInt(tokens.nextToken());
-		int d = Integer.parseInt(tokens.nextToken());
+		PID s = PID.newInstance( Integer.parseInt(tokens.nextToken()) );
+		PID d = PID.newInstance( Integer.parseInt(tokens.nextToken()) );
 		String t = tokens.nextToken();
 		String p = tokens.nextToken();
 		return new Message(s, d, t, p);

@@ -1,5 +1,7 @@
 package base;
 
+import process.PID;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -9,7 +11,7 @@ public class Worker extends Thread {
 
 	private Socket s;
 	private Registrar r;
-	private int myprocess;
+	private PID myprocess;
 	
 	/* Random delay generator */
 	Random random;
@@ -24,7 +26,7 @@ public class Worker extends Thread {
 		this.s = s;
 		this.r = r;
 
-		myprocess = Utils.INFINITY;
+		myprocess = PID.newInstance(Utils.INFINITY);
 		
 		random = new Random();
 		
@@ -33,11 +35,11 @@ public class Worker extends Thread {
 	
 	private void unicast (Message m, int delay) {
 		
-		int src = m.getSource();
-		int dst = m.getDestination();
+		PID src = m.getSource();
+		PID dst = m.getDestination();
 		
-		Record source = r.find (src);
-		Record destination = r.find (dst);
+		Record source = r.find(src);
+		Record destination = r.find(dst);
 		
 		if ((source == null) || (destination == null)) {
 			/* In this unlikely event. */
@@ -79,9 +81,9 @@ public class Worker extends Thread {
 	}
 	
 	private void deliver (Message m) {
-		int source = m.getSource();
-		int destination = m.getDestination();
-		if (destination != -1) {
+		PID source = m.getSource();
+		PID destination = m.getDestination();
+		if (destination.getNumber() != -1) {
 			unicast(m, getDelay());
 		} else {
 			int delay;
@@ -89,7 +91,7 @@ public class Worker extends Thread {
 			boolean first = true;
 			/* Broadcast. */
 			for (int i = 1; i <= r.n; i++) {
-				drop = (source == i && Utils.SELFMSGENABLED == false);
+				drop = (source.getNumber() == i && Utils.SELFMSGENABLED == false);
 				if (drop)
 					continue;
 
@@ -98,7 +100,7 @@ public class Worker extends Thread {
 					first = false;
 				} else delay = -1;
 				
-				m.setDestination(i);
+				m.setDestination(PID.newInstance(i));
 				unicast(m, delay);
 			}
 		}

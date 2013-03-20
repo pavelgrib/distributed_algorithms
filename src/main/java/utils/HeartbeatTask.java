@@ -1,10 +1,9 @@
 package utils;
 
-import process.DistributedProcess;
+import base.Process;
+import process.DistributedTask;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,25 +11,21 @@ import java.util.concurrent.TimeUnit;
  * Date: 3/13/13
  * Time: 9:34 PM
  */
-public class HeartbeatTask {
+public class HeartbeatTask implements Runnable {
 
-    private DistributedProcess process;
-    final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(2);
-    Runnable task;
+    private Process process;
 
-    public HeartbeatTask getInstance() {
-        final HeartbeatTask hbt = new HeartbeatTask(process);
-        hbt.scheduler.schedule( new Runnable() {
-            @Override
-            public void run() {
-                hbt.process.broadcast("HEARTBEAT",
-                        String.valueOf(System.currentTimeMillis()));
-            }
-        }, Constants.HEARTBEAT_FREQUENCY, TimeUnit.MILLISECONDS );
-        return hbt;
+
+    private HeartbeatTask(Process process) {
+        this.process = process;
     }
 
-    private HeartbeatTask( DistributedProcess process) {
-        this.process = process;
+    public static HeartbeatTask getInstance(Process forProcess) {
+        return new HeartbeatTask(forProcess);
+    }
+
+    @Override
+    public void run() {
+        this.process.broadcast( "HEARTBEAT", String.valueOf(System.currentTimeMillis()) );
     }
 }

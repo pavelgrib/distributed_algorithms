@@ -1,5 +1,7 @@
 package base;
 
+import process.PID;
+
 import java.lang.Math;
 
 class Broadcaster extends Process {
@@ -10,7 +12,7 @@ class Broadcaster extends Process {
 	private long delay;
 	private double delaysquared;
 
-	public Broadcaster (String name, int pid, int n) {
+	public Broadcaster (String name, PID pid, int n) {
 		
 		super(name, pid, n);
 		
@@ -38,7 +40,8 @@ class Broadcaster extends Process {
 					rate = (double) (Utils.STEP * 1000) / (double) dt;
 				else
 					rate = 0.0;
-				Utils.out(pid, String.format("[SEND] %06d\trate %10.1f m/s", times, rate));
+				Utils.out(this.getPid(), String.format("[SEND] %06d\trate %10.1f m/s",
+                        times, rate));
 				_t_send = t__send;
 			}
 		}
@@ -67,19 +70,27 @@ class Broadcaster extends Process {
 			average = (double) delay / (double) Utils.STEP;
 			/* Calculate std deviation */
 			deviation = Math.sqrt(
-				(delaysquared - (double) (delay * delay) / (double) Utils.STEP) / (double) (Utils.STEP - 1)
+				(delaysquared - (double) (delay * delay) / (double) Utils.STEP) /
+                        (double) (Utils.STEP - 1)
 			);
-			Utils.out(pid, String.format("[RECV] %06d\trate %10.1f m/s\tavg. delay %10.1f\tstddev %10.1f", count, rate, average, deviation));
+			Utils.out(this.getPid(), String.format("[RECV] %06d\trate %10.1f " +
+                    "m/s\tavg. delay %10.1f\tstddev %10.1f", count, rate, average,
+                    deviation));
 			_t_recv = t__recv;
 			/* Reset delay */
 			delay = 0;
 			delaysquared = 0.0;
 		}
 	}
-	
-	public static void main(String [] args) {
+
+    @Override
+    public void execute(Runnable task) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public static void main(String [] args) {
 		String name = args[0];
-		int pid = Integer.parseInt(args[1]);
+		PID pid = PID.newInstance(Integer.parseInt(args[1]));
 		int n = Integer.parseInt(args[2]);
 		Broadcaster P = new Broadcaster(name, pid, n);
 		/* Don't forget to register! */

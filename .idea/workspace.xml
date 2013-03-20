@@ -2,34 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="adce7416-0011-4121-b6d7-ed097a0a9647" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/utils/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/process/DistributedProcess.java" afterPath="$PROJECT_DIR$/src/main/java/process/DistributedProcess.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/process/DistributedTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/process/PID.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/fd/SimpleStats.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/utils/Timestamp.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/base/Broadcaster.java" afterPath="$PROJECT_DIR$/src/main/java/base/Broadcaster.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/process/ELEProcess.java" afterPath="$PROJECT_DIR$/src/main/java/process/ELEProcess.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fd/FailureDetector.java" afterPath="$PROJECT_DIR$/src/main/java/fd/FailureDetector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/HeartbeatTask.java" afterPath="$PROJECT_DIR$/src/main/java/utils/HeartbeatTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/base/Message.java" afterPath="$PROJECT_DIR$/src/main/java/base/Message.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/process/PFDProcess.java" afterPath="$PROJECT_DIR$/src/main/java/process/PFDProcess.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java" afterPath="$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/base/Process.java" afterPath="$PROJECT_DIR$/src/main/java/base/Process.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/Timestamp.java" afterPath="$PROJECT_DIR$/src/main/java/utils/Timestamp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/base/Registrar.java" afterPath="$PROJECT_DIR$/src/main/java/base/Registrar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/base/Utils.java" afterPath="$PROJECT_DIR$/src/main/java/base/Utils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/base/Worker.java" afterPath="$PROJECT_DIR$/src/main/java/base/Worker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/distributed_algorithms.iml" afterPath="$PROJECT_DIR$/distributed_algorithms.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="distributed_algorithms.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363340897672" ignored="false" />
-    <file path="/fragment.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363348982163" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/misc.xml" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362845823051" ignored="false" />
+    <file path="/Dummy.txt" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363651165347" ignored="false" />
+    <file path="/fragment.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363618037669" ignored="false" />
     <file path="/README.md" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362847011480" ignored="false" />
     <file path="/a.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362845831888" ignored="false" />
     <file path="/sample.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362845817060" ignored="false" />
     <file path="/DistributedProcess.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363349044752" ignored="false" />
-    <file path="/Process.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363224130899" ignored="false" />
+    <file path="/Process.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363715744898" ignored="false" />
     <file path="/Listener.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362918928223" ignored="false" />
     <file path="/ELEProcess.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1362920532292" ignored="false" />
-    <file path="/PFDProcess.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363224836378" ignored="false" />
+    <file path="/PFDProcess.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363734187388" ignored="false" />
     <file path="/IFailureDetector.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363134817888" ignored="false" />
-    <file path="/PerfectFailureDetector.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363221658437" ignored="false" />
-    <file path="/Timestamp.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363348866648" ignored="false" />
+    <file path="/PerfectFailureDetector.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363718430088" ignored="false" />
+    <file path="/Timestamp.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363618361579" ignored="false" />
     <file path="/Constants.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363350429700" ignored="false" />
     <file path="/ScheduledTask.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363224537712" ignored="false" />
-    <file path="/HeartbeatTask.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363350508878" ignored="false" />
+    <file path="/HeartbeatTask.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363615200553" ignored="false" />
     <file path="/Task.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363348996967" ignored="false" />
+    <file path="/DistributedTask.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363482642097" ignored="false" />
+    <file path="/PID.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363715909265" ignored="false" />
+    <file path="/Message.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363606411582" ignored="false" />
+    <file path="/Utils.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363734072016" ignored="false" />
+    <file path="/FailureDetector.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363651339882" ignored="false" />
+    <file path="/SuspicionTask.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363733422350" ignored="false" />
+    <file path="/SimpleStats.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363651627306" ignored="false" />
+    <file path="/Registrar.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363733529207" ignored="false" />
+    <file path="/Worker.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363733602026" ignored="false" />
+    <file path="/Broadcaster.java" changelist="adce7416-0011-4121-b6d7-ed097a0a9647" time="1363733777921" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,68 +108,80 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="FailureDetector.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/fd/FailureDetector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="17" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PerfectFailureDetector.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="45" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DistributedProcess.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/process/DistributedProcess.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="32" selection-start="400" selection-end="400" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ELEProcess.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/process/ELEProcess.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="8" selection-start="956" selection-end="1058" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PFDProcess.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/process/PFDProcess.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="48" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HeartbeatTask.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/HeartbeatTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="56" selection-start="883" selection-end="935" vertical-scroll-proportion="0.5423729">
+            <state line="17" column="51" selection-start="293" selection-end="293" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#580#794#0" expanded="true" />
-                <element signature="e#783#784#0" expanded="true" />
+                <element signature="e#1633#1783#0" expanded="true" />
+                <element signature="e#1768#1769#0" expanded="true" />
+                <element signature="e#2826#2966#0" expanded="true" />
+                <element signature="e#2955#2956#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/Constants.java">
+      <file leaf-file-name="Worker.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/base/Worker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="10" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0">
+            <state line="28" column="51" selection-start="574" selection-end="574" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Broadcaster.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/base/Broadcaster.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="77" column="74" selection-start="1997" selection-end="1997" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Registrar.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/base/Registrar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="90" column="17" selection-start="2018" selection-end="2018" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/base/Utils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="66" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FaultManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/base/FaultManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="82" column="20" selection-start="2013" selection-end="2013" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FailureDetector.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/fd/FailureDetector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="17" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PFDProcess.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/process/PFDProcess.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="68" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.77896136">
               <folding />
             </state>
           </provider>
@@ -158,17 +190,10 @@
       <file leaf-file-name="Process.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/base/Process.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="169" column="31" selection-start="3936" selection-end="3936" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Timestamp.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/Timestamp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="10" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="11" column="52" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="method#connect#0;class#Process#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -191,30 +216,35 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/base/Listener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/base/IFailureDetector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fd/IFailureDetector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fd/FailureDetector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fd/Timestamp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/process/ELEProcess.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/ScheduledTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/process/PFDProcess.java" />
-        <option value="$PROJECT_DIR$/src/main/java/base/Process.java" />
+        <option value="$PROJECT_DIR$/src/main/java/process/DistributedTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/base/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/Timestamp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/Runanble.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/Task.java" />
-        <option value="$PROJECT_DIR$/src/main/java/process/DistributedProcess.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/Constants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fd/FailureDetector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fd/Stats.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fd/SimpleStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/HeartbeatTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/process/PID.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/base/Process.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/SuspicionTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/base/Registrar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/base/Worker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/base/Broadcaster.java" />
+        <option value="$PROJECT_DIR$/src/main/java/base/Utils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/process/PFDProcess.java" />
       </list>
     </option>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="895" />
-    <option name="y" value="22" />
-    <option name="width" value="1025" />
-    <option name="height" value="1054" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -312,20 +342,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="distributed_algorithms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="distributed_algorithms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="distributed_algorithms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -469,12 +485,12 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="FullScreen" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -483,6 +499,7 @@
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="utils" />
+      <recent name="process" />
       <recent name="fd" />
     </key>
   </component>
@@ -523,6 +540,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -548,19 +578,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -620,7 +637,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="895" y="22" width="1025" height="1054" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -630,17 +647,18 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39918533" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Kahlua" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30922693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3094995" sideWeight="0.33333334" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21736011" sideWeight="0.35037407" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3094995" sideWeight="0.65918803" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21736011" sideWeight="0.64089775" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299389" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3095723" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -705,103 +723,124 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/base/Registrar.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/process/DistributedTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="59" selection-start="1274" selection-end="1274" vertical-scroll-proportion="0.0">
+        <state line="10" column="0" selection-start="205" selection-end="205" vertical-scroll-proportion="0.19973369">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/process/EPFDProcess.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/fd/SimpleStats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/lang/Process.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="44" selection-start="543" selection-end="543" vertical-scroll-proportion="0.28242677" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/base/Listener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="24" selection-start="628" selection-end="635" vertical-scroll-proportion="0.4955947">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/process/ELEProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="8" selection-start="956" selection-end="1058" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/process/PFDProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="48" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/base/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="11" selection-start="378" selection-end="378" vertical-scroll-proportion="0.30508474">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/base/Process.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="31" selection-start="3936" selection-end="3936" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fd/FailureDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="17" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Timestamp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="10" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/process/DistributedProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="32" selection-start="400" selection-end="400" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="45" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="10" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0">
+        <state line="6" column="17" selection-start="96" selection-end="96" vertical-scroll-proportion="0.119521916">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/HeartbeatTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="56" selection-start="883" selection-end="935" vertical-scroll-proportion="0.5423729">
+        <state line="28" column="43" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/process/PID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="8" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/base/Record.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/base/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="38" selection-start="1425" selection-end="1425" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/base/FaultManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="20" selection-start="2013" selection-end="2013" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/fd/FailureDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/fd/PerfectFailureDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="51" selection-start="293" selection-end="293" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1633#1783#0" expanded="true" />
+            <element signature="e#1768#1769#0" expanded="true" />
+            <element signature="e#2826#2966#0" expanded="true" />
+            <element signature="e#2955#2956#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/base/Worker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="51" selection-start="574" selection-end="574" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/base/Broadcaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="74" selection-start="1997" selection-end="1997" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#580#794#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/base/Registrar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="17" selection-start="2018" selection-end="2018" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/base/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="66" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/process/DistributedProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="17" selection-start="209" selection-end="209" vertical-scroll-proportion="0.21970706">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/base/Process.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="52" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="method#connect#0;class#Process#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/process/PFDProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="68" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.77896136">
+          <folding />
         </state>
       </provider>
     </entry>

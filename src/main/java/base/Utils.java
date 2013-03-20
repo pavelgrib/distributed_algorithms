@@ -1,5 +1,7 @@
 package base;
 
+import process.PID;
+
 public class Utils {
 
 	public static final int INFINITY = -1;
@@ -31,11 +33,11 @@ public class Utils {
 		}
 	}
 
-	public static synchronized void out (int id, String s) {
+	public static synchronized void out (PID id, String s) {
 		
 		/* Printf assumes there are no more than 999 processes */
 		if (DEBUG) {
-			String x = String.format("[%03d] %s%n", id, s);
+			String x = String.format("[%03d] %s%n", id.getNumber(), s);
 			System.out.print(x);
 			System.out.flush();
 		}
@@ -50,7 +52,8 @@ public class Utils {
 	}
 	
 	public static void main (String [] args) {
-		Utils.out(1, "test");
+		PID test_pid = PID.newInstance(1);
+        Utils.out(test_pid, "test");
 		Utils.out("test");
 	}
 }

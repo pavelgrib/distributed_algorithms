@@ -1,23 +1,27 @@
 package base;
 
+import fd.FailureDetector;
 import process.DistributedProcess;
-import utils.Constants;
+import process.PID;
 
 import java.io.*;
 import java.net.*;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public abstract class Process implements DistributedProcess {
-	
-	private String name; /* A triptych that identifies a process p */
+
+    /* A triptych that identifies a process p */
+	private String name;
 	private String host;
 	private int    port;
+    /* A triptych that identifies a process p */
+
 
     protected ExecutorService threadPool;
 	/* A unique identifier; and the total number of process */
-	public int pid, n;
+	private int n;
+    private PID pid;
 	
 	/* Socket `socket` connects to the base.Registrar */
 	private Socket socket = null;
@@ -27,12 +31,12 @@ public abstract class Process implements DistributedProcess {
 	
 	/* A random number generator */
 	Random random;
-	
-	public Process(String name, int pid, int n) {
+    public FailureDetector failureDetector;
+
+    public Process(String name, PID pid, int n) {
 		
 		this.name = name;
-		this.port = Utils.REGISTRAR_PORT + pid;
-        initExecutor();
+		this.port = Utils.REGISTRAR_PORT + pid.getNumber();
 		this.host = "UNKNOWN";
 		try {
 			this.host = (InetAddress.getLocalHost()).getHostName();
@@ -58,7 +62,7 @@ public abstract class Process implements DistributedProcess {
 		init ();
 		Utils.out(pid, "Connected.");
 	}
-	
+
 	private Socket connect () {
 		Socket socket = null;
 		int attempts = 0;
@@ -103,13 +107,13 @@ public abstract class Process implements DistributedProcess {
 		Message m;
 		boolean result;
 		payload = String.format("%s:%s:%d", name, host, port);
-		m = new Message(pid, 0, "NULL", payload);
+		m = new Message(pid, PID.registrarPID, "NULL", payload);
 		result = await(m.pack());
 		if (result)
 			Utils.out(pid, "Registered.");
 		return result;
 	}
-	
+
 	private boolean await (String message) {
 		write(message);
 		return
@@ -141,7 +145,7 @@ public abstract class Process implements DistributedProcess {
 	public String getName () { return name; }
 	public String getHost () { return host; }
 	
-	public int getPid () { return pid; }
+	public PID getPid () { return pid; }
 	public int getNo  () { return   n; }
 	
 	public String getInfo() {
@@ -169,7 +173,7 @@ public abstract class Process implements DistributedProcess {
     public void broadcast(String type, String payload) {
 		Message m = new Message();
 		m.setSource(pid);
-		m.setDestination(-1); /* Cf. base.Worker.deliver() */
+		m.setDestination(PID.newInstance(-1)); /* Cf. base.Worker.deliver() */
 		m.setType(type);
 		m.setPayload(payload);
 		/* for (int i = 1; i <= n; i++) {
@@ -179,5 +183,4 @@ public abstract class Process implements DistributedProcess {
 		unicast(m);
     }
 
-    public abstract void initExecutor();
 }

@@ -1,12 +1,14 @@
 package base;
 
+import process.PID;
+
 import java.util.concurrent.*;
 import java.net.*;
 import java.io.*;
 
 public class Registrar {
 	
-	public static final int pid = 0; /* P0 is reserved for this server */
+	public static final PID pid = PID.registrarPID; /* P0 is reserved for this server */
 	
 	/* The size of the system */
 	public int n;
@@ -47,7 +49,7 @@ public class Registrar {
 		String key = record.getName();
 		Record result = registry.put(key, record);
 		/* Synchronize */
-		tryNotify ();
+		tryNotify();
 		return (result == null) ? true : false; 
 	}
 	
@@ -56,9 +58,9 @@ public class Registrar {
 		registry.put(key, record);
 	}
 	
-	public Record find (int pid) {
+	public Record find (PID pid) {
 		String key;
-		key = String.format("P%d", pid);
+		key = String.format("P%d", pid.getNumber());
 		return find(key);
 	}
 
