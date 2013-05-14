@@ -15,51 +15,51 @@ import java.util.concurrent.*;
  * Date: 3/9/13
  * Time: 11:11 AM
  */
-public class PerfectFailureDetector implements FailureDetector {
+public class PerfectFailureDetector extends BasicFailureDetector implements
+        FailureDetector {
 
     private static final boolean INTERRUPT_IF_RUNNING = true;
 
 
-    private ConcurrentSkipListSet<PID> suspects; // list of process IDs
-    private ConcurrentHashMap<PID, Long> heartbeats;
-    private Process owner;
-    private HeartbeatTask hbTask;
-    private ScheduledExecutorService scheduler;
-    private ConcurrentHashMap<PID, ScheduledFuture<?>> suspicionFutures;
-
     public PerfectFailureDetector( Process owner ) {
-        this.owner = owner;
+        super(owner);
     }
 
     @Override
     public void begin() {
         initializeSuspectsList();
-        scheduleHeartbeats();
+        scheduleHeartbeats( Constants.HEARTBEAT_FREQUENCY );
         scheduleSuspicions();
     }
 
-    private void initializeSuspectsList() {
-        suspects = new ConcurrentSkipListSet<PID>();
-        heartbeats = new ConcurrentHashMap<PID, Long>( owner.getNo() );
+    @Override
+    protected void initializeSuspectsList() {
+        otherProcesses = new ConcurrentHashMap<PID, Boolean>( this.owner.getNo() );
+        heartbeats = new ConcurrentHashMap<PID, Long>( this.owner.getNo() );
 
-        for ( PID key : heartbeats.keySet() ) {
-            heartbeats.put( key, System.currentTimeMillis() );
+        // initially no-one is suspected
+        long currentTime = System.currentTimeMillis();
+        for ( PID id : heartbeats.keySet() ) {
+            heartbeats.put( id, currentTime );
         }
     }
 
-    private void scheduleHeartbeats() {
+    /* only run initially to send periodic heartbeats */
+    private void scheduleHeartbeats(final long frequency ) {
         hbTask = HeartbeatTask.getInstance(owner);
-        scheduler.scheduleAtFixedRate( hbTask, 0, Constants.HEARTBEAT_FREQUENCY,
+        scheduler.scheduleAtFixedRate( hbTask, 0, frequency,
                 TimeUnit.MILLISECONDS );
     }
 
-    private void scheduleSuspicions() {
+    /* only run initially to schedule all the processes to be suspected */
+    @Override
+    protected void scheduleSuspicions() {
         for ( int i = 1; i < owner.getNo() && i != owner.getPid().getNumber(); ++i ) {
             final PID id = PID.newInstance(i);
             scheduler.schedule( new Runnable() {
                 @Override
                 public void run() {
-                    suspects.add( id );
+                    otherProcesses.put( id, Boolean.TRUE );
                 }
             }, Constants.HEARTBEAT_FREQUENCY + 2 * Utils.DELAY,
                     TimeUnit.MILLISECONDS );
@@ -68,52 +68,23 @@ public class PerfectFailureDetector implements FailureDetector {
 
     @Override
     public void receive(Message m) {
-        if ( m.getType() == "HEARTBEAT" ) {
-            receiveHeartbeat(m);
-        }
-    }
-
-    private void receiveHeartbeat( final Message m ) {
-        // update last heartbeat
         PID source = m.getSource();
 
-        if ( heartbeats.contains( source ) ) {
-            heartbeats.replace( source, Long.valueOf(m.getPayload() ) );
-        } else {
-            heartbeats.put( source, Long.valueOf( m.getPayload() ) );
-        }
+        heartbeats.replace( source, Long.valueOf(m.getPayload() ) );
         suspicionFutures.get(m.getSource()).cancel( INTERRUPT_IF_RUNNING );
 
         // kick off new suspicion task
-        updateSuspicionFuture( m.getSource() );
+        updateSuspicionFuture( m.getSource(), Constants.HEARTBEAT_FREQUENCY + 2 *
+                Utils.DELAY );
     }
 
     @Override
-    public boolean isSuspect(PID processID) {
-        return suspects.contains( processID );
-        // | File Templates.
-    }
-
-    private void updateSuspicionFuture(final PID otherProcess) {
-        suspicionFutures.put( otherProcess, scheduler.schedule( new Runnable() {
-            @Override
-            public void run() {
-                suspects.add( otherProcess );
-            }
-        }, Constants.HEARTBEAT_FREQUENCY + 2 * Utils.DELAY,
-                TimeUnit.MILLISECONDS ) );
+    public boolean isSuspected(PID processID) {
+        return otherProcesses.get( processID ).equals( Boolean.TRUE );
     }
 
     @Override
     public int getLeader() {
-        return 0;  //To change body of implemented methods use File | Settings |
-        // File Templates.
+        return 0;
     }
-
-    @Override
-    public boolean isSuspected(PID processID ) {
-        return suspects.contains( processID );
-    }
-
-
 }

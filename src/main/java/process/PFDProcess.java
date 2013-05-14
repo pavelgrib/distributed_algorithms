@@ -1,18 +1,17 @@
 package process;
 
 import base.Message;
+import base.Process;
 import fd.PerfectFailureDetector;
-
 import java.util.concurrent.Executors;
 
 /**
- * Created with IntelliJ IDEA.
  * User: paul
  * Date: 3/9/13
  * Time: 11:11 AM
  * Implementation of a Process Perfect Failure Detector
  */
-public class PFDProcess extends base.Process {
+public class PFDProcess extends Process {
 
     public PFDProcess(String name, PID pid, int totalN) {
         super(name, pid, totalN);
@@ -21,30 +20,14 @@ public class PFDProcess extends base.Process {
     }
 
     @Override
-    public boolean registeR() {
-        return super.registeR();
-    }
-
-    @Override
     public void receive(Message m) {
         String type = m.getType();
         if ( type == "HEARTBEAT" ) {
             System.out.println( m.toString() );
             this.failureDetector.receive(m);
-        } else if ( type == "VAL" ) {
-
-        } else if ( type == "OUTCOME" ) {
-
         } else {
-            System.out.println("Unknown message type " + m.getType());
+            System.out.println("Unknown message type " + type);
         }
-    }
-
-    // this is the raison d'etre of the process, not doing much here
-    @Override
-    public void execute(Runnable task) {
-        threadPool.execute(task);
-
     }
 
     // submits task to be executed in the future
@@ -56,12 +39,10 @@ public class PFDProcess extends base.Process {
         }
     }
 
-
     public static void main( String[] args ) {
         PID id = PID.newInstance( Integer.valueOf(args[1]) );
         PFDProcess p = new PFDProcess( args[0], id, Integer.valueOf(args[2]) );
         p.registeR();
+
     }
-
-
 }

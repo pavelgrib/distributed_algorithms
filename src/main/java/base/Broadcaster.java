@@ -26,8 +26,8 @@ class Broadcaster extends Process {
 		delay = 0;
 		delaysquared = 0.0;
 	}
-	
-	private void begin () {
+
+	public void begin () {
 		long t__send, dt;
 		double rate;
 		_t_send = System.currentTimeMillis();

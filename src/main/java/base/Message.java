@@ -71,8 +71,7 @@ public class Message {
 
 	public String pack () {
 		String s = 
-			String.format("%d",      source) + Utils.SEPARATOR + 
-			String.format("%d", destination) + Utils.SEPARATOR +
+			source + Utils.SEPARATOR + destination + Utils.SEPARATOR +
 			String.format("%s",        type) + Utils.SEPARATOR + 
 			String.format("%s",     payload) + Utils.SEPARATOR ;
 		return s;
@@ -80,8 +79,7 @@ public class Message {
 	
 	public String toString () { /* Just prettier than pack() */
 		String s = 
-			String.format("%03d",      source) + Utils.SEPARATOR + 
-			String.format("%03d", destination) + Utils.SEPARATOR +
+			source + Utils.SEPARATOR + destination + Utils.SEPARATOR +
 			String.format("%s"  ,        type) + Utils.SEPARATOR + 
 			String.format("%s"  ,     payload) + Utils.SEPARATOR ;
 		return s;

@@ -22,11 +22,22 @@ public class PID implements Comparable<PID> {
     public int getNumber() { return this.id; }
 
     public String toString() {
-        return String.valueOf(id);
+        return String.format("%d", id);
     }
 
     @Override
     public int compareTo(PID otherID) {
         return this.id - otherID.getNumber();
+    }
+
+    public boolean equals(PID otherID) {
+        return compareTo(otherID) == 0;
+    }
+
+    public static void main( String[] args ) {
+        PID id2 = PID.newInstance(2);
+        PID id3 = PID.newInstance(2);
+
+        System.out.println( id3.equals(id2) );
     }
 }

@@ -35,17 +35,16 @@ public class Worker extends Thread {
 	
 	private void unicast (Message m, int delay) {
 		
-		PID src = m.getSource();
-		PID dst = m.getDestination();
+		PID sourcePID = m.getSource();
+		PID destinationPID = m.getDestination();
 		
-		Record source = r.find(src);
-		Record destination = r.find(dst);
+		Record source = r.find(sourcePID);
+		Record destination = r.find(destinationPID);
 		
 		if ((source == null) || (destination == null)) {
 			/* In this unlikely event. */
-			String msg =
-				String.format("Error: link <P%d, P%d> does not exist.", 
-			src, dst);
+			String msg = "Error: link <P" + sourcePID + ", P" + destinationPID +
+                    "> does not exist.";
 			System.err.println(msg);
 			System.exit(1);
 		}
@@ -166,7 +165,8 @@ public class Worker extends Thread {
 						t__recv = System.currentTimeMillis();
 						dt = t__recv - _t_recv;
 						rate = (double) (Utils.STEP * 1000) / (double) dt;
-						Utils.out(r.pid, String.format("[W %03d][RECV] %06d\t%10.1f", myprocess, count, rate));
+						Utils.out(r.pid, String.format("[W %03d][RECV] %06d\t%10" +
+                                ".1f", myprocess, count, rate));
 						_t_recv = t__recv;
 					}
 					deliver (m);

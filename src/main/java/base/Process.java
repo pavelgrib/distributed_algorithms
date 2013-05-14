@@ -7,6 +7,7 @@ import process.PID;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.ExecutorService;
 
 public abstract class Process implements DistributedProcess {
@@ -22,7 +23,10 @@ public abstract class Process implements DistributedProcess {
 	/* A unique identifier; and the total number of process */
 	private int n;
     private PID pid;
-	
+
+    /* all other processses */
+    private ConcurrentSkipListSet<PID> otherPIDs;
+
 	/* Socket `socket` connects to the base.Registrar */
 	private Socket socket = null;
 	private InputStreamReader input;
@@ -52,7 +56,13 @@ public abstract class Process implements DistributedProcess {
 		
 		this.pid = pid;
 		this.n = n;
-		
+
+        otherPIDs = new ConcurrentSkipListSet<PID>();
+        for ( int i = 1; i < this.n; ++i ) {
+            if ( i != this.pid.getNumber() )
+                otherPIDs.add(PID.newInstance(i));
+        }
+
 		random = new Random();
 		
 		/* Accepts connections from one of base.Registrar's worker threads */
@@ -100,7 +110,7 @@ public abstract class Process implements DistributedProcess {
 		}
 		return ;
 	}
-	
+
 	@Override
     public boolean registeR() {
 		String payload;
@@ -130,7 +140,7 @@ public abstract class Process implements DistributedProcess {
 		}
 		if (reply == null)
 			return false;
-		return ((reply.equals("OK")) ? true : false);
+		return reply.equals("OK");
 	}
 	
 	private boolean write (String message) {
@@ -153,7 +163,12 @@ public abstract class Process implements DistributedProcess {
 		s = String.format("%s at %s:%d", name, host, port);
 		return s;
 	}
-	
+
+    @Override
+    public void begin() {
+        this.failureDetector.begin();
+    }
+
 	@Override
     public synchronized void receive(Message m) {
 
@@ -176,11 +191,16 @@ public abstract class Process implements DistributedProcess {
 		m.setDestination(PID.newInstance(-1)); /* Cf. base.Worker.deliver() */
 		m.setType(type);
 		m.setPayload(payload);
-		/* for (int i = 1; i <= n; i++) {
-			m.setDestination(i);
+		for ( PID id : otherPIDs ) {
+			m.setDestination(id);
 			unicast (m);
-		} */
+		}
 		unicast(m);
+    }
+
+    @Override
+    public void execute(Runnable task) {
+        threadPool.execute(task);
     }
 
 }

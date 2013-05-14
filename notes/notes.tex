@@ -1,0 +1,229 @@
+\documentclass[a4paper,10pt]{article}
+%\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\def\floor#1{\lfloor #1 \rfloor}
+\def\ceil#1{\lceil #1 \rceil}
+% \usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage[titletoc]{appendix}
+\titleformat{\chapter}[hang]{\bf\Huge}{\thechapter}{1cm}{}
+
+\pagestyle{plain}
+% -------------------- this stuff for code --------------------
+
+\usepackage{anysize}
+\marginsize{30mm}{30mm}{20mm}{20mm}
+
+\newenvironment{formal}{%
+  \def\FrameCommand{%
+    \hspace{1pt}%
+    {\color{blue}\vrule width 2pt}%
+    {\color{formalshade}\vrule width 4pt}%
+    \colorbox{formalshade}%
+  }%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+  \noindent\hspace{-4.55pt}% disable indenting first paragraph
+  \begin{adjustwidth}{}{7pt}%
+  \vspace{2pt}\vspace{2pt}%
+}
+{%
+  \vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+
+\newenvironment{changemargin}[2]{\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{0pt}%
+\setlength{\rightmargin}{0pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{0pt plus 1pt}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+}\item }{\end{list}}
+
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[scaled]{helvet}
+\usepackage{inconsolata}
+
+
+\definecolor{colKeys}{rgb}{0,0,0.9} 
+\definecolor{colIdentifier}{rgb}{0,0,0} 
+\definecolor{colString}{rgb}{0.7,0,0} 
+\definecolor{colComments}{rgb}{0,0.6,0} 
+\usepackage{listings}
+\lstset{
+  language=python,
+  stringstyle=\color{colString},
+  keywordstyle=\color{colKeys},
+  identifierstyle=\color{colIdentifier},
+  commentstyle=\color{colComments},
+  numbers=left,
+  tabsize=4,
+  frame=single,
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  numberstyle=\tiny\ttfamily,
+  framexleftmargin=0mm,
+  xleftmargin=7mm,
+  xrightmargin=7mm,
+  frameround={tttt},
+  captionpos=b
+}
+
+%% Headers and footers
+\usepackage[section]{placeins}
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{plain}\cleardoublepage}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+\usepackage{afterpage,lastpage}
+\usepackage[includeheadfoot,margin=2.5cm]{geometry}
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+
+% -------------------- end of code stuff --------------------
+
+
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\makeatletter \def\thickhrulefill{\leavevmode \leaders \hrule height 1pt\hfill
+\kern \z@}
+
+
+\author{Paul Gribelyuk (pg1312, a5)}
+\makeatother
+\title{\Large \#DOC429 - Study Notes for Parallel Algorithms}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Metrics (64 pages)}
+\subsection{Architectures}
+\begin{itemize}
+\item \emph{Message passing} used in the case of many machines having only local memory.
+\item \emph{Shared address space} used when multiple processors in same computer access same memory;  \emph{UMA} has equal access times for all, otherwise \emph{NUMA}, so address space is distributed among processors
+\item \emph{Interconnect Network (IN)} provides hardware to pass messages; topology defines performance: ring, mesh, hypercube
+\end{itemize}
+\emph{PRAM} is an idealization of shared memory MIMD with UMA.  Different access modes:
+\begin{itemize}
+\item EREW - exclusive read exclusive write; minimizes concurrency
+\item CREW - concurrent read exclusive write
+\item CRCW - concurrent read, concurrent write; to write concurrently, semantics can be \emph{common}, \emph{arbitrary}, \emph{priority}, \emph{reduce} (sum or max or some other reduce operation).
+\item ERCW - dumb
+\end{itemize}
+\subsection{Embedding}
+\emph{Binary grey codes} used to convert ring network to hypercube:
+\begin{eqnarray}
+G(0,1) & = & 0 \\
+G(1,1) & = & 1 \\
+G(i, n+1) & = & \left\{ \begin{array}{ll}
+G(i,n) & i < 2^n \\
+2^n + G(2^{n+1} - 1 - i, n) & i \geq 2^n \end{array} \right.
+\end{eqnarray}
+Mesh to hypercube can be done by concatenating RGC of each dimension.  For node $i$ in $2^{r_1}\times\ldots \times2^{r_m}$ mesh, mapping is $G(i_1, r_1)G(i_2,r_2)\ldots G(i_m,r_m)$.  Can also map a tree to a hypercube.  At each level $k$ of the tree, assign the $k$-th bit either 0 or 1.
+
+\subsection{Communication patterns}
+\begin{itemize}
+\item Simple message
+\item One-to-All broadcast; dual is single node accumulation
+\item All-to-All broadcast;  dual is multi-node accumulation
+\item One-to-One personalized; dual is single node gather
+\item All-to-All personalized scatter, dual is multi-node gather
+\item Other (?)
+\end{itemize}
+
+\subsection{Performance}
+\begin{itemize}
+\item Run Time: $T_p$
+\item Speedup: $S_p = \frac{\text{best serial } T}{T_p}$
+\item Efficiency: $E_p = \frac{S_p}{p}$ is speedup per processor, usually less than 1
+\item Cost: $C_p = p\cdot T_p$, total amount of computation done on $p$ processors.  Cost optimal if $E_p = \Theta(1)$
+\item 
+\end{itemize}
+Cost optimality means costs are quivalent to best serial runtime! \\
+Example:  to add $n$ numbers on hypercube with $p=2^d$ nodes each nodes doing $k=n/p$ serial steps, then partial sums reduced via single node accumulation:
+\begin{eqnarray}
+\text{best serial } T &=& n\\
+T_p &=& \frac{n}{p} + \log{p} \\
+S_p &=& \frac{p}{\frac{n}{p} + \log(p)} \\
+E_p &=& \Theta(1/(n/p + \log(p))) \\
+C_p &=& n + p\log(p)
+\end{eqnarray}
+So cost-optimal if $n = \Theta(p\log(p))$. \\
+To understand how algorithm scales, we look at \emph{isoefficiency}.  $O_p = C_p - Work$ is a measure of communication latency.
+
+\subsection{Communication Costs}
+\begin{itemize}
+\item \emph{startup time} $t_s$ incurred once per message
+\item \emph{per-hop time} $t_h$ 
+\item \emph{transfer time} $t_w$
+\end{itemize}
+Store and forward messages:
+$$
+t_{comm} = t_s + (mt_w + t_h) l
+$$
+Cut-through routing:
+$$
+t_{comm} = t_s + mt_w + lt_h
+$$
+\begin{itemize}
+\item \emph{Diameter} is maximum length between any two nodes
+\item \emph{Arc connectivity} is how many links must be broken to fragment network
+\item \emph{Bisection width} is how many links must be broken to split network into 2 equal halves
+\item \emph{cost} is usually the number of links in a network
+\end{itemize}
+\begin{tabular}{|c|cccc|}
+\hline
+topology & diameter & bisection & arc con & cost \\
+\hline
+completely connected & 1 & $p^2/4$ & p-1 & $p(p-1)/2$ \\
+star & 2 & 1 & 1 & p-1 \\
+binary tree & $2\log((p+1)/2$ & 1 & 1 & p-1 \\
+linear array & $p-1$ & 1 & 1 & $p-1$ \\
+2-D mesh w/o wrap & $2(\sqrt(p)-1)$ & $\sqrt(p)$ & 2 & $2p\sqrt(p-1)$ \\
+2-D wraparound & $2\floor{\sqrt(p)/2}$ & $2\sqrt{p}$ & 4 & $2p$ \\
+hypercube & $log{p}$ & $p/2$ & $log{p}$ & $p\log{p}/2$ \\
+wrap k-ary d cube & $d\floor{k/2}$ & $2k^{d-1}$ & 2d & dp \\
+\hline
+\end{tabular}
+\\
+\\
+Different costs associated with these topologies: \\ \\
+\begin{tabular}{|c|ccc|}
+\hline
+operation & hypercube & mesh & ring\\
+\hline
+one-to-all bcast & $\min\left\{(t_s+t_w m)\log(p), 2(t_s\log(p) + t_w m)\right\}$ & $2(t_s + t_w m\log(p)$ & $t_s + t_w m\log(p)$ \\
+all-to-all bcast &  $t_s\log(p) + t_w m(p-1)$ & $(t_s + t_w m\sqrt{p})(\sqrt{p}-1)$ & $(t_s+t_w m)(p-1)$ \\
+all-reduce & $\min\left\{(t_s+t_w m)\log(p), 2(t_s\log(p) + t_w m)\right\}$ &  & \\
+scatter, gather & $t_s log{p} + t_w  (p-1)$ & & \\
+ATA personalized & $(t_s + t_w m)(p-1)$ & & \\
+circular shift & $t_s + t_w m$ & & \\
+\hline
+\end{tabular}
+\\
+\\
+\emph{Isoefficiency} is how $E$ scales with amount of work $W$ and with $p$.  Goal is to find a way to scale $W$ as a function of $p$.
+$$
+T_p = \frac{W + O(W, p)}{p} \quad\implies S_p = \frac{W}{T_p} = \frac{W\cdot p}{W + O(W,p)} \quad\implies E = \frac{S}{p} = \frac{1}{1 + O(W,p)/W}
+$$
+Another way to formulate cost-optimality:
+\[pT_p = \Theta(W)\quad\implies W+O(W,p) = \Theta(W)\quad\implies W = \Omega(O(W,p))\]
+
+\section{Dense Matrix (49 pages)}
+\subsection{Matrix-Vector Multiply}
+\section{Linear Equations (21 pages)}
+\section{Partitioning (27 pages)}
+\section{Search (73 pages)}
+\section{MPI (31 pages)}
+
+\end{document}
+

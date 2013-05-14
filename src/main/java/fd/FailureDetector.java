@@ -10,10 +10,7 @@ public interface FailureDetector {
 	
 	/* Handles in-coming (heartbeat) messages */
 	void receive(Message m);
-	
-	/* Returns true if ‘process’ is suspected */
-	boolean isSuspect(PID processID);
-	
+
 	/* Returns the next leader of the system; used only for §2.1.2.
 	 * Or, it should also be used to notify a process if the leader
 	 * changed.
