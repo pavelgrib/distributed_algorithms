@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  14 MAY 2013 16:07
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  15 MAY 2013 01:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -729,6 +729,12 @@ Package: listings 2007/02/22 1.4 (Carsten Heinz)
 (/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
+(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+)
 (/usr/local/texlive/2012/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
@@ -1017,45 +1023,54 @@ LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
 (Font)              scaled to size 4.80003pt on input line 146.
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 183--215
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--215
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
 
  []
 
+[3] [4]
+LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
+(Font)              scaled to size 9.60007pt on input line 269.
+LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
+(Font)              scaled to size 6.72005pt on input line 269.
+LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
+(Font)              scaled to size 4.80003pt on input line 269.
+ [5] [6]
+LaTeX Font Info:    Try loading font information for T1+fi4 on input line 320.
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--215
-
- []
-
+(/usr/local/texlive/2012/texmf-dist/tex/latex/inconsolata/t1fi4.fd
+File: t1fi4.fd 2009/05/28 T1/Inconsolata
+)
 
 AED: lastpage setting LastPage
-[3] [4] (./notes.aux) ) 
+[7] (./notes.aux) ) 
 Here is how much of TeX's memory you used:
- 6640 strings out of 493488
- 92973 string characters out of 3141326
- 158766 words of memory out of 3000000
- 9757 multiletter control sequences out of 15000+200000
- 49080 words of font info for 93 fonts, out of 3000000 for 9000
+ 6679 strings out of 493488
+ 93851 string characters out of 3141326
+ 160475 words of memory out of 3000000
+ 9785 multiletter control sequences out of 15000+200000
+ 51939 words of font info for 99 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 42i,12n,40p,326b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/ly1/
-texnansi.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1/bitstrea/charter/b
-chb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/bitstrea/charter/bchr
-8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/bitstrea/charter/bchri8a
-.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/mathdesign/mdbch/md-chr7t.
-pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/mathdesign/mdbch/md-chr7v.p
-fb></usr/local/texlive/2012/texmf-dist/fonts/type1/mathdesign/mdbch/md-chr7y.pf
-b></usr/local/texlive/2012/texmf-dist/fonts/type1/mathdesign/mdbch/md-chr8t.pfb
-></usr/local/texlive/2012/texmf-dist/fonts/type1/mathdesign/mdbch/md-chri7m.pfb
->
-Output written on notes.pdf (4 pages, 62287 bytes).
+ 42i,12n,58p,548b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/inconsol
+ata/fi4-ec.enc}{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/ly1/texnansi
+.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1/public/inconsolata/Inconso
+lata.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/bitstrea/charter/bchb8
+a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.p
+fb></usr/local/texlive/2012/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb
+></usr/local/texlive/2012/texmf-dist/fonts/type1/mathdesign/mdbch/md-chr7t.pfb>
+</usr/local/texlive/2012/texmf-dist/fonts/type1/mathdesign/mdbch/md-chr7v.pfb><
+/usr/local/texlive/2012/texmf-dist/fonts/type1/mathdesign/mdbch/md-chr7y.pfb></
+usr/local/texlive/2012/texmf-dist/fonts/type1/mathdesign/mdbch/md-chr8t.pfb></u
+sr/local/texlive/2012/texmf-dist/fonts/type1/mathdesign/mdbch/md-chri7m.pfb>
+Output written on notes.pdf (7 pages, 88478 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
- 35 compressed objects within 1 object stream
+ 66 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
