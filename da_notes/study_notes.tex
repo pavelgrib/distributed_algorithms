@@ -1,0 +1,379 @@
+\documentclass[a4paper,10pt,]{article}
+%\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+% \usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage[titletoc]{appendix}
+\titleformat{\chapter}[hang]{\bf\Huge}{\thechapter}{1cm}{}
+
+\pagestyle{plain}
+% -------------------- this stuff for code --------------------
+
+\usepackage{anysize}
+\marginsize{30mm}{30mm}{20mm}{20mm}
+
+\newenvironment{formal}{%
+  \def\FrameCommand{%
+    \hspace{1pt}%
+    {\color{blue}\vrule width 2pt}%
+    {\color{formalshade}\vrule width 4pt}%
+    \colorbox{formalshade}%
+  }%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+  \noindent\hspace{-4.55pt}% disable indenting first paragraph
+  \begin{adjustwidth}{}{7pt}%
+  \vspace{2pt}\vspace{2pt}%
+}
+{%
+  \vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+
+\newenvironment{changemargin}[2]{\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{0pt}%
+\setlength{\rightmargin}{0pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{0pt plus 1pt}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+}\item }{\end{list}}
+
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[scaled]{helvet}
+\usepackage{inconsolata}
+
+
+\definecolor{colKeys}{rgb}{0,0,0.9} 
+\definecolor{colIdentifier}{rgb}{0,0,0} 
+\definecolor{colString}{rgb}{0.7,0,0} 
+\definecolor{colComments}{rgb}{0,0.6,0} 
+\usepackage{listings}
+\lstset{
+  language=java,
+  stringstyle=\color{colString},
+  keywordstyle=\color{colKeys},
+  identifierstyle=\color{colIdentifier},
+  commentstyle=\color{colComments},
+  numbers=left,
+  tabsize=4,
+  frame=single,
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  numberstyle=\tiny\ttfamily,
+  framexleftmargin=0mm,
+  xleftmargin=7mm,
+  xrightmargin=7mm,
+  frameround={tttt},
+  captionpos=b
+}
+
+%% Headers and footers
+\usepackage{fancyhdr}
+\usepackage[section]{placeins}
+\pagestyle{fancy}
+\fancyhf{}
+\addtolength{\headwidth}{30pt}
+\addtolength{\headwidth}{30pt}
+\renewcommand{\headrulewidth}{0.4pt} % thickness of the header line
+\renewcommand{\footrulewidth}{0.4pt} % thickness of the footer line
+% \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}} % chapter name
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}  % section name
+\lhead[\fancyplain{}{\bf\thepage}]{\fancyplain{}{\bf\rightmark}} % display header
+\rhead[\fancyplain{}{\bf\leftmark}]{\fancyplain{}{}} % display header
+\fancyfoot[C]{\bf\thepage} % display footer (page number)
+\fancyfoot[R]{\bf\today} % display footer (date)
+\fancypagestyle{plain}{ 
+	\fancyhead{} \renewcommand{\headrulewidth}{0pt}
+}
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{plain}\cleardoublepage}}
+
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+\usepackage{afterpage,lastpage,fancyhdr}
+\usepackage[includeheadfoot,margin=2.5cm]{geometry}
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+
+% -------------------- end of code stuff --------------------
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+
+\author{Paul Gribelyuk (pg1312, a5)}
+\makeatother
+\title{Distibuted Algorithms Exam Study Notes}
+\date{\today}
+
+\begin{document}
+\maketitle
+% \tableofcontents
+% \listoffigures
+
+\section{Given Notes}
+\subsection{Introduction slides}
+\begin{itemize}
+  \item Characterizing good models: \emph{accuracy} (how true are the properties compared to real world) vs \emph{tractability} (can be analyzed)
+  \item Modeling costs of an algorithm: state size, complexity, amount of communication
+  \item Modelling elements:
+  \begin{itemize}
+    \item \emph{process} is a computational resource
+    \item \emph{channel} is a communication link between processes; used to transport messages
+  \end{itemize}
+  \item Communication Operations:
+  \begin{itemize}
+    \item send: sends message m ``atomically'' from $P_i$ to $P_j$; invoked by sender
+    \item receive: invoked by receiver and is a \emph{state change} for receiver
+    \item broadcast: a combination of send operations to all processes; not atomic and not deterministic
+  \end{itemize}
+  \item Problems in Distributed Algorithms: reaching a decision (consensus on the same value or decision about a process being different, i.e. a leader), detecting remote failures, tolerating process or communication failures, measuring progress
+  \item Keywords for consensus:
+  \begin{itemize}
+    \item \emph{Agreement}: all processes decided the same value
+    \item \emph{Termination}: all processes make a decision in finite time
+    \item \emph{Validity}: the decided value must be one that was proposed
+  \end{itemize}
+  \item With a lossy channel, agreement is impossible, even among 2 processes.  To prove this, use contradiction, assume it is possible, and notice that the sender of the last message in the communication sequence cannot rely on it being delivered, and thus, his actions cannot depend on the contents of that message.  Therefore, that message is not necessary, therefore, the optimal sequence of messages is shorter.  Iterative argument shows there is no optimal sequence of messages
+  \item Failure types:
+  \begin{itemize}
+    \item \emph{Failstop} A process fails by stopping (halting) and remains stopped.  This can be detected externally
+    \item \emph{Crash} Same as failstop by other processes may not be able to detect the failure
+    \item \emph{Crash+Link} Needs further explanation
+    \item \emph{Receive Omission} Process does not receive all messages
+    \item \emph{Send Omission} Process does not send all messages it wants to
+    \item \emph{General Omission} Combination of receive and send omissions
+    \item \emph{Byzantine} Failure by doing random behavior
+  \end{itemize}
+  \item Channels:
+  \begin{itemize}
+    \item \emph{Reliable}: A message is received if the sending process has not failed at tiem of send and receiving process has not failed at time of arrival
+    \item \emph{Quasi-reliable}: A message is received if both sending and receiving processes have not failed prior to arrival of message
+    \item \emph{Unreliable}: There is no guarantee of a sent message being received
+  \end{itemize}
+  \item 3 Properties of Failure-free networks:
+  \begin{itemize}
+    \item \emph{Liveness} - each process will execute another step eventually
+    \item \emph{Safety} - messages are received exactly as many times as they are sent
+    \item \emph{Liveness}(again) - receipt of a message is guaranteed if process will take infinitely many steps
+  \end{itemize}
+  \item Robust algorithms assume permanent process failures and use failure detection
+  \item Stabilizing algorithms assume processes will be eventually correct and work with transient failures, i.e. non-permament
+  \item Requirements for decision problems: termination and consistency (all decide the same value for either leader or consensus)
+  \item Reliable Atomic broadcast means all processes receive their messages in correct order as they were sent; equivalent to solving consensus
+  \item Types of distributed networks:
+  \begin{itemize}
+    \item Synchronous: there are known upper bounds on computation delays and message delays and processes have synchronized clocks;  this allows them to be able to estimate how long each ``round'' should take and if they don't receive a message from another process, they know for certain that it has failed.  Solving election is easy: each process with $PID = i$ waits $i-1$ rounds and receives messages.  If it receives a message before round $i$, then it decides the leader to be the sender of that message.  Otherwise, it broadcasts its own UID in round $i$.
+    \item Asynchronous: Unbounded execution time, unbounded message sending/receiving time, unsynchronized clocks.  In this case, leader election is hard
+  \end{itemize}
+\end{itemize}
+
+\subsection{Synchronous Algorithms slides}
+We use the synchronous network model of definite upper bounds on processing and communication delays with synchronized clocks.  The network model is one of a graph $G = (V, E)$ of verteces and edges.
+\begin{itemize}
+  \item $distance(i,j)$ is the shortest path from $i$ to $j$
+  \item $diameter(G) = max_{i,j} distance(i,j)$
+\end{itemize}
+A process is a state machine with following properties:
+\begin{itemize}
+  \item \emph{states}
+  \item \emph{start} (initial states)
+  \item \emph{msg} function to generate messages (function from state space to output message)
+  \item \emph{trans} is transition function from state to state (function from state space together with message space to state space)
+\end{itemize}
+A channel can hold a message from message space $M$ or null (no message).\\
+Synchronous execution happens in \emph{rounds} with the steps:
+\begin{itemize}
+  \item[1] generate outgoing message using \emph{msg} at each process
+  \item[2] use \emph{trans} at each process to obtain new state (using current state and incoming message).
+\end{itemize}
+Communication failures resulting in message omission are modeled as null messages in channels.\\
+A synchronous execution is an infinite sequence:
+$$
+C_0, M_1, N_1, M_2, N_2, C_2, \ldots
+$$
+where:
+\begin{itemize}
+  \item $C_r$ is state at round $r$
+  \item $M_r$ is messages sent at round $r$
+  \item $N_r$ is messages received at round $r$
+\end{itemize}
+Identical processes arranged in a ring network cannot solve leader election (proof by contradiction: if exists and execution sequence leading to election, then all processes reach the decision they are the leader at the same time), therefore we need UID to distinguish them (Lynch p.27)\\
+
+\subsubsection{Leader Election In a Ring}
+\emph{LCR algorithm}
+\begin{itemize}
+  \item unidirectional communication
+  \item processes don't know size of ring
+  \item each process has unique UID
+\end{itemize}
+Algorithm:
+\begin{itemize}
+  \item Each process forwards UID to neighbor
+  \item Each process discards received UID if it's less that their own
+  \item Each process forwards UID if received UID is greater than their own
+  \item If process receives their own UID, then they're the leader
+\end{itemize}
+Proving correctness:
+\begin{itemize}
+  \item[1] The \emph{snd} function of a process sending values to process $r$ hops away from max-UID-valued process is $u_{max}$ for any $r$.  Thus, if $r = n-1$, then $i_{max}$ receives its own UID and declares itself the leader
+  \item[2] No other process sees their own UID because $i_{max}$ acts as a barrier to forwarding messages (since it has the highest UID).
+  \item[3] Algorithm terminates by the leader sending a ``halt'' message around.
+\end{itemize}
+Analysis:
+\begin{itemize}
+  \item Time Complexity: $2\cdot n$ if counting $n$ rounds to send ``halt'' message around
+  \item Communication Complexity: $\frac{n(n-1)}{2} + n \approx O(n^2)$
+\end{itemize}
+
+\subsubsection{Leader Election in General Network}
+\emph{FloodMax} solves leader election on any connected graph by asuming processes know upper bound on diameter ($D_{max}$) of network.
+Algorithm:
+\begin{itemize}
+  \item Each process maintains maximum UID seen
+  \item Each process broadcasts maximum on all available channels
+  \item If after $D_{max}$ rounds, a process has same maximum seen as its own UID, then it is the leader.
+\end{itemize}
+So, each process keeps track of its own UID, the max seen UID, the stat ($\{leader, unknown, follower\}$), and number of rounds.  \emph{msg} function places max seen on all output channels so long as number of rounds less than $D_{max}$.  \emph{trans} function updates number of rounds by 1, receives messages from all input channels, updates max seen and makes decision about whether it should update its stat variable (initially set to unknown). \\
+Analysis:
+\begin{itemize}
+  \item Need to prove correctness
+  \item Time complexity is $D_{max}$ rounds
+  \item Communication complexity is $D_{max} \cdot |E|$ sice $|E|$ messages get sent in each round.
+\end{itemize}
+Another approach: \emph{FloodMaxOpt} cuts down on message complexity by only forwarding the max seen if it has been updated by incoming values.  Need to keep another boolean value to keep track of that.
+
+\subsubsection{Breadth-first search in General Network}
+\emph{SyncBFS}\\
+Setup: processes unaware of size of network and laid out in general graph. \\
+Problem is to find the \emph{spanning tree} starting from a specific node $i_0$
+\begin{itemize}
+  \item Each process receives probe messages on incoming channels.
+  \item If that process is unmarked, it marks itself and declares one of the senders of the probe messages its parent
+  \item If a process marked itself in the previous round, then it sends a probe on all outgoing channels
+\end{itemize}
+Analysis:
+\begin{itemize}
+  \item Time complexity: number of rounds
+  \item Communication Complexity: $O(|E|)$
+\end{itemize}
+To account for processes knowing their children (as well as parents), allow for back-channel replies from processes to which probe messages are sent (``child'' or ``not child'').  Initially, the reply will be ``not child'', but when a marked process gets ``child'' replies from all its outgoing neighbors, it replies ``child'' to its parent.  Thus when $i_0$ gets a reply from all outgoing channels, algorithm terminates.\\
+Spanning tree can be used to perform efficient broadcast, or compute distance to each node.
+
+\subsection{Atomic Commitment (AC) slides}
+Distributed transactions are responsible for accessing data at multiple (distributed) sites and bringing state of the whole system from one consistent state to another.  How to do this in the presence of failures of individual nodes?  \emph{Partial failures} can lead to inconsistency.
+Definitions:
+\begin{itemize}
+  \item \emph{Agreement}: all processes decide the same thing (even failed ones!, Lynch p. 183)
+  \item \emph{Termination}: all correct processes make a decision in finite time (this is strong termination Lynch p. 184)
+  \item \emph{Abort Validity}: If one process wants to abort commit, then that has to be the decision
+  \item \emph{Commit Validity}: If all processes are non-faulty, and they all vote ``commit'', only then is commit possible
+\end{itemize}
+Many similarities to the consensus (C) problem: only difference is that we have added restrictions on the binary outcomes: propose(commit) and propose(abort). \\
+\emph{Two-Phase Commit}:
+\begin{itemize}
+  \item[1] All processes send the coordinator their vote.
+  \item[2] Coordinator decides whether abort or commit and sends that back to all processes
+\end{itemize}
+Axioms for deciding coordinator:
+\begin{itemize}
+  \item[AX1] At most one participant becomes a coordinator
+  \item[AX2] Wihtout failures, exactly one participant becomes coordinator
+  \item[AX3] No process assumes coordinator role after some constant $\Delta_c$ time from start of transaction (why is this needed?)
+\end{itemize}
+From Lynch p. 184, Two-Phase Commit solves weak termination (blocking termination) since we assume no failures.  If coordinator fails and has ``abort'' while all others have ``commit'', then it is not clear how decision can be made in two-phase-commit.
+Desired properties of an atomic commitment protocol:
+\begin{itemize}
+  \item[AC1] All deciding participants reach same conclusion
+  \item[AC2] Any paricipant deciding ``commit'' imples all participants voted ``YES''
+  \item[AC3] If all votes are ``YES'' and no failures then we have a ``commit''
+  \item[AC4] Each participant decides 1 or 0 times.
+\end{itemize}
+Algorithm:
+\begin{itemize}
+  \item[1] only invoker executes a send to ask all processes to find out if they willing/able to commit
+  \item[2] each process sets their vote variable accordingly
+  \item[3] they initiate atomic_commitment() call
+  \item[3] In atomic_commitment, only coordinator sends a VOTE_REQUEST to all and waits a maximum of $2\partial$ for replies
+  \item[4] All processes receive VOTE_REQUEST and send their vote variable tagged as VOTE
+  \item[5] If process voted NO, then it sets own decision to ABORT
+  \item[5] Coordinator decides the outcome and broadcasts it to all processes
+  \item[6] If timeout is reached, coordinator broadcasts ABORT
+\end{itemize}
+An aside about broadcast protocols:
+\begin{itemize}
+  \item[B1] If correct process broadcasts $m$, then all correct processes eventually deliver(m)
+  \item[B2] Any message is delivered at most once and only if it was initially broadcast
+  \item[B3] Exists an upper bound on delivery delay, $\Delta_b$, so no process deliver(m) after that time
+\end{itemize}
+Proof that Two-Phase-Commit works:  
+\begin{itemize}
+  \item To prove AC2, need to look at all paces where a process decides ``commit''.  This happens only if deliver(commit) happened.  This message was broadcast by coordinator, and it must have been a ``YES''.  
+  \item To prove AC3, straightforward by following code and assuming that all participants voted ``YES'' and no failures
+  \item To prove AC4, note that the protocol only allows each participant to make at most one decision
+  \item To prove AC1, suppose that is not the case.  Only places for a process to decide ``ABORT'' are when it voted ``NO'', when it received ``ABORT'' decision, and upon timeout.  Since other process decided ``COMMIT'', means coordinator received ``YES'' votes from everyone, therefore, only way for a process to abort when everyone else committed is if it received an abort message from coordinator.  Since coordinator sent only one message, this is contradiction.
+\end{itemize}
+This is a blocking protocol since it's possible that no decision is made in some executions (i.e. when coordinator dies).  To get nonblocking, need to include assumptions about atomic commit and about broadcast:
+\begin{itemize}
+  \item[AC5] Every correct participant eventually decides
+  \item[B4] If any process deliver(m), then all correct processes eventually deliver(m)
+\end{itemize}
+
+\subsection{Byzantine Consensus slides}
+\begin{itemize}
+  \item Ånalogy to failed processes is the loyal generals problem
+  \item Commanding general sends order to other generals (retreat or attack)
+  \item Loyal generals obey orders, traitors cannot be guaranteed to follow orders
+\end{itemize}
+Interactive consistency:
+\begin{itemize}
+  \item[IC1] Correct processes receive same message
+  \item[IC2] If senders is correct, then message sent = message received
+\end{itemize}
+Impossibility result: If $m$ processes are traitors, then we need $3m+1$ total processes to gain consensus.
+Communication assumptions:
+\begin{itemize}
+  \item[A1] Every sent message is delivered correctly
+  \item[A2] Receiver of message knows identity of sender
+  \item[A3] Absence of message is detectable
+\end{itemize}
+Lamport's solution was as follows:
+\begin{itemize}
+  \item $U(n,m)$ for $n$ generals and $m$ traitors
+  \item exists a $v_{def}$ as a global default if no messages arrive from traitorous general
+  \item exists function $majority(v_1, \ldots, v_{n-1})$ to calculate most prevalent vote ($v_{def} if tie$)
+  \item Algorithm:
+  \begin{itemize}
+    \item General G sends $v$ to all lieutenants $L_i$
+    \item Each lieutenant $L_i$ sends $v_i$ (value received) to $n-2$ other lieutenants using this algorithm recursively and assuming $m-1$ traitors
+    \item Each lieutenant collects values $v_j$ received from other lieutenants and calculates $majority(v_j)$ for all $j$.
+  \end{itemize}
+  \item A traitorous lieutenant will broadcast conflicting values, but they will disappear after $m+1$ rounds because they will be drowned out by correct values from $n-m$ loyal lieutenants.
+  \item A traitorous commander will send conflicting values, which will lead to $v_{def}$ being selected by all.
+  \item Message complexity: $O(n^{m+1})$ since each application of $U(n,m)$ causes $n-1$ messages
+  \item  Time Complexity: $m+1$ rounds (fundamental to all algorithms in the presence of $m$ failures)
+  \item Need to review the other algorithm presented in notes
+\end{itemize}
+
+\subsection{Asynchronous Replication slides}
+% \begin{itemize}
+%   \item
+% \end{itemize}
+\begin{itemize}
+  \item Single point of failure problem: In Two-Phase-Commit this is the coordinator (?)
+  \item Challenge with replication is \emph{consistency}, how to make sure all replicas have same data
+  \item In 2PC, no processes are allowed to fail, all votes must be counted, and no progress under failure if there is no recovery
+  \item We model a process as a state machine, data updates are transitions
+  \item Each replica has same state update so is consistent
+  \item If we nominate \emph{primary}, then all operations (state transitions) get sent to primary
+  \item If primary fails, need to elect a new (unique) leader to be primary
+\end{itemize}
+
+
+\subsection{Failure Detectors slides}
+
+\end{document}  
