@@ -90,7 +90,7 @@
 \fancyfoot[C]{\bf\thepage} % display footer (page number)
 \fancyfoot[R]{\bf\today} % display footer (date)
 \fancypagestyle{plain}{ 
-	\fancyhead{} \renewcommand{\headrulewidth}{0pt}
+  \fancyhead{} \renewcommand{\headrulewidth}{0pt}
 }
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{plain}\cleardoublepage}}
 
@@ -115,8 +115,7 @@
 % \tableofcontents
 % \listoffigures
 
-\section{Given Notes}
-\subsection{Introduction slides}
+\section{Introduction slides}
 \begin{itemize}
   \item Characterizing good models: \emph{accuracy} (how true are the properties compared to real world) vs \emph{tractability} (can be analyzed)
   \item Modeling costs of an algorithm: state size, complexity, amount of communication
@@ -172,7 +171,7 @@
   \end{itemize}
 \end{itemize}
 
-\subsection{Synchronous Algorithms slides}
+\section{Synchronous Algorithms slides}
 We use the synchronous network model of definite upper bounds on processing and communication delays with synchronized clocks.  The network model is one of a graph $G = (V, E)$ of verteces and edges.
 \begin{itemize}
   \item $distance(i,j)$ is the shortest path from $i$ to $j$
@@ -204,7 +203,7 @@ where:
 \end{itemize}
 Identical processes arranged in a ring network cannot solve leader election (proof by contradiction: if exists and execution sequence leading to election, then all processes reach the decision they are the leader at the same time), therefore we need UID to distinguish them (Lynch p.27)\\
 
-\subsubsection{Leader Election In a Ring}
+\subsection{Leader Election In a Ring}
 \emph{LCR algorithm}
 \begin{itemize}
   \item unidirectional communication
@@ -230,7 +229,7 @@ Analysis:
   \item Communication Complexity: $\frac{n(n-1)}{2} + n \approx O(n^2)$
 \end{itemize}
 
-\subsubsection{Leader Election in General Network}
+\subsection{Leader Election in General Network}
 \emph{FloodMax} solves leader election on any connected graph by asuming processes know upper bound on diameter ($D_{max}$) of network.
 Algorithm:
 \begin{itemize}
@@ -247,7 +246,7 @@ Analysis:
 \end{itemize}
 Another approach: \emph{FloodMaxOpt} cuts down on message complexity by only forwarding the max seen if it has been updated by incoming values.  Need to keep another boolean value to keep track of that.
 
-\subsubsection{Breadth-first search in General Network}
+\subsection{Breadth-first search in General Network}
 \emph{SyncBFS}\\
 Setup: processes unaware of size of network and laid out in general graph. \\
 Problem is to find the \emph{spanning tree} starting from a specific node $i_0$
@@ -264,7 +263,7 @@ Analysis:
 To account for processes knowing their children (as well as parents), allow for back-channel replies from processes to which probe messages are sent (``child'' or ``not child'').  Initially, the reply will be ``not child'', but when a marked process gets ``child'' replies from all its outgoing neighbors, it replies ``child'' to its parent.  Thus when $i_0$ gets a reply from all outgoing channels, algorithm terminates.\\
 Spanning tree can be used to perform efficient broadcast, or compute distance to each node.
 
-\subsection{Atomic Commitment (AC) slides}
+\section{Atomic Commitment (AC) slides}
 Distributed transactions are responsible for accessing data at multiple (distributed) sites and bringing state of the whole system from one consistent state to another.  How to do this in the presence of failures of individual nodes?  \emph{Partial failures} can lead to inconsistency.
 Definitions:
 \begin{itemize}
@@ -297,9 +296,9 @@ Algorithm:
 \begin{itemize}
   \item[1] only invoker executes a send to ask all processes to find out if they willing/able to commit
   \item[2] each process sets their vote variable accordingly
-  \item[3] they initiate atomic_commitment() call
-  \item[3] In atomic_commitment, only coordinator sends a VOTE_REQUEST to all and waits a maximum of $2\partial$ for replies
-  \item[4] All processes receive VOTE_REQUEST and send their vote variable tagged as VOTE
+  \item[3] they initiate atomicCommitment call
+  \item[3] In atomicCommitment, only coordinator sends a VOTE-REQUEST to all and waits a maximum of $2\partial$ for replies
+  \item[4] All processes receive VOTE-REQUEST and send their vote variable tagged as VOTE
   \item[5] If process voted NO, then it sets own decision to ABORT
   \item[5] Coordinator decides the outcome and broadcasts it to all processes
   \item[6] If timeout is reached, coordinator broadcasts ABORT
@@ -323,7 +322,7 @@ This is a blocking protocol since it's possible that no decision is made in some
   \item[B4] If any process deliver(m), then all correct processes eventually deliver(m)
 \end{itemize}
 
-\subsection{Byzantine Consensus slides}
+\section{Byzantine Consensus slides}
 \begin{itemize}
   \item Ånalogy to failed processes is the loyal generals problem
   \item Commanding general sends order to other generals (retreat or attack)
@@ -345,7 +344,7 @@ Lamport's solution was as follows:
 \begin{itemize}
   \item $U(n,m)$ for $n$ generals and $m$ traitors
   \item exists a $v_{def}$ as a global default if no messages arrive from traitorous general
-  \item exists function $majority(v_1, \ldots, v_{n-1})$ to calculate most prevalent vote ($v_{def} if tie$)
+  \item exists function $majority(v_1, \ldots, v_{n-1})$ to calculate most prevalent vote ($v_{def}$ if tie)
   \item Algorithm:
   \begin{itemize}
     \item General G sends $v$ to all lieutenants $L_i$
@@ -359,7 +358,7 @@ Lamport's solution was as follows:
   \item Need to review the other algorithm presented in notes
 \end{itemize}
 
-\subsection{Asynchronous Replication slides}
+\section{Asynchronous Replication slides}
 % \begin{itemize}
 %   \item
 % \end{itemize}
@@ -370,10 +369,22 @@ Lamport's solution was as follows:
   \item We model a process as a state machine, data updates are transitions
   \item Each replica has same state update so is consistent
   \item If we nominate \emph{primary}, then all operations (state transitions) get sent to primary
-  \item If primary fails, need to elect a new (unique) leader to be primary
+  \item If primary fails, last op it attempted did not complete.  Do leader election for next unique primary.
 \end{itemize}
 
+\section{Failure Detectors slides}
 
-\subsection{Failure Detectors slides}
+\section{Asynchronous Algorithms}
+\begin{itemize}
+\item Algorithm 1: process wishing to enter critical region sets a local variable and checks the other process' local lock variable.  If the other process has the same lock variable set, it doesn't enter the region.  Else, it enters, executs and unsets the local lock variable
+\item Algorithm 2: For some fairness to hold, we need a shared variable, ``turn''.  The process ``i'' sets a local flag variable, then stores ``i'' in ``turn''.  While either the other process has its flag set or turn has value ``i'', the process blocks. Otherwise, process ``i'' enters critical region, executes, exits, and unsets local flag variable.
+\item the second algorithm allows for two modes: when another process is competing and for when it is not
+\item we can extend to multiple processes by allowing for multiple iterations to happen before reaching critical region
+\end{itemize}
+
+\section{a}
+\begin{itemize}
+\item 
+\end{itemize}
 
 \end{document}  

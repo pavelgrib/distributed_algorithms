@@ -1,0 +1,283 @@
+\documentclass[a4paper,10pt,]{report}
+%\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{algorithm2e}
+\usepackage{amsmath}
+% \usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage[titletoc]{appendix}
+\titleformat{\chapter}[hang]{\bf\Huge}{\thechapter}{1cm}{}
+
+\pagestyle{plain}
+% -------------------- this stuff for code --------------------
+
+\usepackage{anysize}
+\marginsize{30mm}{30mm}{20mm}{20mm}
+
+\newenvironment{formal}{%
+  \def\FrameCommand{%
+    \hspace{1pt}%
+    {\color{blue}\vrule width 2pt}%
+    {\color{formalshade}\vrule width 4pt}%
+    \colorbox{formalshade}%
+  }%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+  \noindent\hspace{-4.55pt}% disable indenting first paragraph
+  \begin{adjustwidth}{}{7pt}%
+  \vspace{2pt}\vspace{2pt}%
+}
+{%
+  \vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+
+\newenvironment{changemargin}[2]{\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{0pt}%
+\setlength{\rightmargin}{0pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{0pt plus 1pt}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+}\item }{\end{list}}
+
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[scaled]{helvet}
+\usepackage{inconsolata}
+
+
+\definecolor{colKeys}{rgb}{0,0,0.9} 
+\definecolor{colIdentifier}{rgb}{0,0,0} 
+\definecolor{colString}{rgb}{0.7,0,0} 
+\definecolor{colComments}{rgb}{0,0.6,0} 
+\usepackage{listings}
+\lstset{
+  language=java,
+  stringstyle=\color{colString},
+  keywordstyle=\color{colKeys},
+  identifierstyle=\color{colIdentifier},
+  commentstyle=\color{colComments},
+  numbers=left,
+  tabsize=4,
+  frame=single,
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  numberstyle=\tiny\ttfamily,
+  framexleftmargin=0mm,
+  xleftmargin=7mm,
+  xrightmargin=7mm,
+  frameround={tttt},
+  captionpos=b
+}
+
+%% Headers and footers
+\usepackage{fancyhdr}
+\usepackage[section]{placeins}
+\pagestyle{fancy}
+\fancyhf{}
+\addtolength{\headwidth}{30pt}
+\addtolength{\headwidth}{30pt}
+\renewcommand{\headrulewidth}{0.4pt} % thickness of the header line
+\renewcommand{\footrulewidth}{0.4pt} % thickness of the footer line
+% \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}} % chapter name
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}  % section name
+\lhead[\fancyplain{}{\bf\thepage}]{\fancyplain{}{\bf\rightmark}} % display header
+\rhead[\fancyplain{}{\bf\leftmark}]{\fancyplain{}{}} % display header
+\fancyfoot[C]{\bf\thepage} % display footer (page number)
+\fancyfoot[R]{\bf\today} % display footer (date)
+\fancypagestyle{plain}{ 
+  \fancyhead{} \renewcommand{\headrulewidth}{0pt}
+}
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{plain}\cleardoublepage}}
+
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+\usepackage{afterpage,lastpage,fancyhdr}
+\usepackage[includeheadfoot,margin=2.5cm]{geometry}
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+
+% -------------------- end of code stuff --------------------
+
+
+
+\author{Paul Gribelyuk (pg1312, a5)}
+\makeatother
+\title{Distributed Algorithms: Study Questions}
+\date{\today}
+
+\begin{document}
+\maketitle
+% \tableofcontents
+% \listoffigures
+
+\chapter{Exam 2010}
+\section{1a}
+The basic routing problem is that processes are not generally fully connected and messages would need to be directed along links.  The problem is of finding efficient links to send messages along so they arrive quickly at destination.
+\section{1b}
+Destination-based routing is the construction of routes based on the destination (usually via routing tables), whereas source-based routing is used in broadcast and multicast to propagate messages along (based on source, being the root of the tree).  Dijsktra's algorithm is not useful here.  The Floyd Warshall algorithm computes shortest path between any two pairs of nodes in a graph.
+\section{1c}
+\subsection{i}
+This algorithm is a way of measuring the distance between a specific node $v$ and any other node in the network for the purpose of destination-based routing.  It works by having each process update the minimum distance between itself and the node $v$ by receiving the message of another processor with a known distance, and then seeing if the weight $w_{ij}$ added to that distance is lower than it's own estimate of the distance.  As this propagates through the network, nodes will contain information about how best to get to node $v$.
+\subsection{ii}
+The total number of messages is initially 2 for $v$.  If there are $N$ total processors in the ring, it will take $N/2$ rounds before each processor knows the minimum distance.  The 2nd round has 2 processors receiving messages and sending 4 messages (2 to $v$).  The 3rd round, the 2 new processors will send 4 messages to neighbors.  In general, there will always be 4 messages per round so total message count is $2N - 2$.
+
+\section{2a}
+The coordination problem for two processes is the act of making sure we have these properties in the algorithm:
+\begin{itemize}
+\item Validity - the coordinator chosen should be from among the proposed ones
+\item Termination - all processes involved in deciding a coordinator must eventually decide
+\item Agreement - the coordinator was chosen unanimously
+\end{itemize}
+\section{2b}
+The problem as I stated it is ambiguous as I have not specified the failure model.  Under a no crash model, the problem is trivially solvable.  If the channel is faulty, then it is unsolvable because neither process can depend on the receipt of its last message, so this follows as a proof by contradiction.
+\section{2c}
+The coordination problem, as stated above, applies to synchronous models.  If we change the model to asynchronous, then this would keep the problem unsolvable without making stronger assumptions.
+\section{2d}
+To solve leader-election with 1 link failure in a ring, we know that when there are no failures, it takes $N$ rounds in unidirecitonal LCR since the leader waits to hear his own UID.  If there is a link failure, we have to assume bidirectional links and each process proceeds to send messages further and further (they have to return back to the sender with some value) away and if it receives it from the opposite direction (then the ring is complete and he is the leader), or it comes back twice with the same length travelled and it's own UID (in which case, there is a link failure but at the end of the link, it sends back both the length travelled and the max over all UIDs).
+
+\section{3a}
+\subsection{i}
+Two-phase commit is where all processes send votes to a coordinator and the coordinator chooses whether to commit or not based on unanimity of the collected votes.
+\subsection{ii}
+The centralized 2PC relies on a coordinator, while the decentralized 2PC has messages being sent to everyone at each stage.  Thus, if all processes receive ``yes'' from all other processes, the send ``preCommit'' messages around, and once they receive those from everyone, they will go through with the operation.  Centralized 2PC requires $\Theta(N)$ messages, whereas decentralized requires $\Theta(N^2)$ messages.  Time complexity is the same.
+\section{3b}
+\subsection{i}
+Three types of fairness are:
+\begin{itemize}
+\item Strong fairness: if a resource is requested infinitely often, it will be granted infinitely often
+\item Weak fairness: if a resource is requested continuously after a certain point, it will be granted infinitely often thereafter
+\item No fairness: the only way a resource may be granted is if there is no other alternative.  No other guarantee can be made
+\end{itemize}
+\subsection{ii}
+Peterson 2P supports Weak Fairness as the setting of the ``turn'' variable places the process in the queue, continously.
+\section{3c}
+\subsection{i}
+Failure detectors are necessary for leader election and consensus problems, as failed processes will not be considered for voting.  
+\subsection{ii}
+An eventually perfect detector will no suspect any correct process after some specified time.  An eventually strong detector will not suspect at least one correct processes after some specified time.
+
+\section{4a}
+\subsection{i}
+Two events are \emph{concurrent} if there is no way from either process (where each event occured) to reach the other process via message passing.  By looking at the history of message sends and receives, it is possible to determine whether any events occured at the other process.  If neither process receives or sends messages before the events, then they have no further information by which to order them.
+\subsection{ii}
+All events concurrent with q2: p1, p2, p3
+\subsection{iii}
+The total time order relation is defined in terms of messages passing between processes.  Each message has a logical clock counter for the sending process, which is the largest number of clocks of which it is aware of via messages sent or received, or inter-process events occuring.  If a process receives a larger value than its internal value, it uses it going forward, else, it uses its own.  In the case that two processes have the same logical clock, their PID will break the tie.
+\subsection{iv}
+For vector clocks, each process sends a vector of all clock values it is aware of for each other process (including itself).  The receiver updates personal vector of clocks, taking the latest one to reflect most up-to-date information.  For a vector timestamp to be before another:
+
+\[V_a < V_b \Rightarrow \forall k\quad V_a[k] \leq V_b[k] \quad and \quad \exists j\quad V_a[j]\neq V_b[j] \]
+
+Then if $a \rightarrow b$ implies either $a$ and $b$ are in the same process, in which case $V_a < V_b$ trivially, or $a$ is a send and $b$ is receipt of the same message, in which case, this is also trivial.  Alternatively, if $V_a < V_b$, need to show that $a \rightarrow b$.  Prove by contradiction: suppose $a$ does not cause $b$, then $a$ is a send but $b$ is not the receive.  The receipt of the message sent at $a$ must be after $b$ so $V_b[i] < V_a[i]$ by definition, not knowing about the send.  Alternatively, if $b$ is a receive from a different point prior to $a$, then it won't know about the upated value of $V_a[i]$ when $a$ happens and again $V_b[i] < V_a[i]$.
+
+\section{4b}
+\subsection{i}
+Processes share resource and communicate via messages asynchronously:
+\begin{itemize}
+\item Safety - no two processes have access to resource at the same time
+\item Order - requests granted in order made
+\item Liveness - every request to access resource eventually satisfied
+\end{itemize}
+\subsection{ii}
+The centralized solution is to have a resource allocator process receiving messages requesting access for critical region.  Access is granted via unique reply to the first receipt of message.  The rest are held in a queue.  Thus, for the coordinator, if $b\rightarrow b'$ then the sender of $b$ gets access first.
+\subsection{iii}
+This solves safety and liveness.  However, requests cannot be granted in order made.
+
+
+\chapter{Exam 2012}
+
+\section{1a}
+A distributed algorithm is one which performs computations across a variety of machines without any guarantee of shared resources, having to rely on message passing for communication.  A centralized algorithm can be significantly simpler as all states about which it needs to know are readily available and observable.
+\section{1b}
+\subsection{i}
+The consensus algorithm must satisfy:
+\begin{itemize}
+\item Validity: the result is from one of the ones proposed
+\item Agreement: all processes must come to the same conclusion
+\item Termination: all processes must eventually vote
+\end{itemize}
+\subsection{ii}
+As an example, if a process can failstop, then the algorithm will block on step 3. receiving values from all other processes.  Also, if a process with the minimum value failstops in the middle of sending a value, then some processes will have the correct minimum value while others will have an inferior value, thus failing on Agreement
+\subsection{iii}
+If $F$ processes crash, then we need $F+1$ rounds, so that after that many rounds, we are guaranteed to have a round without failures and then all broadcast values will indeed be correctly distributed to everyone.
+\section{2a}
+\subsection{i}
+Lamport's algorithm iteratively sends UM(n,m) messages to all processes not yet sent (as seen via the path down the tree, that the algorithm has taken).  The algorithm isn't solvable for $N=3$ and $F=1$.  Now if $N < 3F + 1$, then the 3 parts of $N$ subdivided evently can be represented as one part each, among them having 1 failed subset.  This cannot be solved.
+\subsection{ii}
+The loyal generals take $v_{def}$ when there is a tie in the calculation of majority.  $v_{def}$ is sent when the faulty process doesn't send anything.
+\subsection{iii}
+For $N=100$, need $F = 33$ to reach consensus, taking $34$ rounds.
+\section{2b}
+\subsection{i}
+Constructing message table involves making 1 round for the general to send the messages to liutenants and one round of sharing the data (since $F$ = 1).  Message table for process $i$ will have values $(V, [1, i])$.  
+\subsection{ii}
+The decision reached will be the decision at the leaf nodes in Stage 3.
+\subsection{iii}
+In total, $(n-1) + (n-1)\cdot (n-2) = 16$ are sent.
+\section{3a}
+\subsection{i}
+One idea to compute AND on a ring:  first elect a leader, which takes $\Theta(n)$.  Then have the leader send his value in one direction only and wait to receive the AND value after $n$ rounds, which also takes $\Theta(n)$. \\
+Alternatively, nodes with 0 send values and terminate.  Nodes with 1 wait for $n/2$ rounds forwarding any messages and halting at 0 if they receive any.  Else they halt at 1.
+\subsection{ii}
+Worst case complexity is when there are mostly 1s
+\subsection{iii}
+The worst case is worse than the best case because in the best case, the algorithm could terminate immediately
+\subsection{iv}
+Time complexity is on average $n/4$
+\section{2b}
+\subsection{i}
+Asynchronous AND on a ring??? WTF!!!
+\subsection{ii}
+no clue about message complexity
+
+\section{4}
+Very similar to Exam 2010 question 1
+
+\chapter{Exam 2011}
+
+\section{1a}
+A \emph{synchronous} network has processes which know the upper bound for the amount of time any process requires as well as an upper bound on message delay.  Physical clocks at synchronous network nodes count time perfectly in unison.  Alternatively an \emph{asynchronous} network cannot put any restrictions on computation of message delay times.  Physical clocks in asynchronous networks are not perfect and subject to disparities. 
+\section{1b}
+The Leader Election problem is the problem of selecting a process from the network according to a prespecified criteria.  The conditions are:
+\begin{itemize}
+\item Termination: All correct processes vote at some point
+\item Consistency: All correct processes decide on the same process
+\end{itemize}
+\section{1c}
+The FloodMax algorithm assumes that processes know the diameter (maximum distance to any other node) of the network.
+\subsection{i}
+Pseudocode for FloodMax:
+\begin{algorithm}
+\KwData{$i$ is current processor ID\\
+$D$ is the diameter of the network}
+$Max \leftarrow i$\\
+$Stat \leftarrow $ Unknown
+\For{$r = 1$ to $D$}{
+	send [VAL: $Max$] \\
+	receive [VAL: v] \\
+	\If{$v > Max$}{
+		$Max \leftarrow v$
+	}
+}
+\uIf{ $Max == i$}{
+	$Stat \leftarrow $ Leader
+}
+\Else{
+	$Stat \leftarrow $ Follower
+}
+\end{algorithm}
+
+\subsection{ii}
+The time complexity is $D$, the diameter of the network
+\subsection{iii}
+The message complexity is $D\times N$ where $N$ is the number of nodes in the network.  Each round sees $N$ messages being sent and there are $D$ such rounds.
+\subsection{iv}
+The \emph{FloodMaxOpt} algorithm reduces message traffic by not sending another message if its internal value for $Max$ has not been updated, since that message would not provide any further information to the receiving nodes.
+
+
+\end{document}
